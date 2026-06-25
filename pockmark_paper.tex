@@ -1,0 +1,382 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\title{\bfseries Pockmark fields are locally ordered but not hyperuniform:\\
+a structure-factor analysis of Mediterranean seabed fluid-escape depressions}
+\author{Ruqing Chen\\[2pt]
+\small GUT Geoservice Inc., Montr\'eal, Qu\'ebec, Canada\\
+\small \texttt{ruqing.chen@gutgeoservice.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Submarine pockmarks --- seabed depressions left by ascending fluids --- occur in
+fields whose spatial arrangement has been described both as fault-controlled
+clustering and as regular spacing set by lateral inhibition. We ask a sharper,
+previously untested question: are pockmark fields \emph{hyperuniform} --- that
+is, do their long-wavelength density fluctuations vanish, as in avian
+photoreceptor mosaics and other disordered hyperuniform patterns --- or is any
+regularity purely local? Using single fields drawn from a comprehensive open
+geodatabase of Mediterranean pockmarks, we combine the Clark--Evans
+nearest-neighbour index (local order) with the radially-averaged structure
+factor $S(k)$ and the number variance $\sigma^2(R)$ (long-range order), each
+compared against complete-spatial-randomness, hard-core (random sequential
+adsorption) and inhomogeneous-Poisson nulls. Local order spans the full range:
+one field is strongly clustered (nearest-neighbour index $R=0.47$, below its
+heterogeneity null), one is essentially random ($R=1.08$), and one is genuinely
+regular ($R=1.26$, exceeding even a hard-core gas). Yet \emph{every} field is
+long-range super-Poissonian --- $S(k\!\to\!0)>1$ and $\sigma^2(R)$ growing with
+window area, not perimeter --- and in each case the long-range behaviour matches
+the field's own inhomogeneous-Poisson null. No field is hyperuniform; the single
+regular field is an anisotropic lineament, not an isotropic pattern. Pockmark
+order is therefore local and steric or structural, and is masked at long range
+by density heterogeneity. The result places pockmark fields with other
+self-organised geomorphic patterns whose local order does not extend to
+hyperuniformity, and shows that nearest-neighbour regularity must not be read as
+long-range order without a structure-factor test.
+\end{abstract}
+
+\section{Introduction}
+
+Pockmarks are circular to elliptical seabed depressions formed where gas or pore
+water escapes through fine-grained sediment, first described on the Scotian
+Shelf \citep{king1970} and now known from continental shelves, slopes, fjords
+and lakes worldwide \citep{hovland1988}. Within a field, individual pockmarks
+number from tens to many thousands, and the geometry of their spatial
+arrangement is a long-standing question. Two end-member pictures recur. In the
+first, pockmarks track subsurface fluid plumbing --- faults, polygonal-fault
+networks, gas chimneys --- and are correspondingly aligned or clustered. In the
+second, a field self-organises: each pockmark draws fluid from, and so depletes,
+a surrounding area, inhibiting the formation of neighbours within a
+characteristic distance, so that the field acquires a regular, quasi-periodic
+spacing. This lateral-inhibition picture, and the use of nearest-neighbour and
+Ripley's-$K$ statistics to detect the resulting regularity, was set out by
+\citet{hammer2009} for a North Sea field.
+
+A distinct and stronger notion of spatial order has meanwhile become central in
+condensed-matter physics and is increasingly applied to biological and
+geological patterns: \emph{hyperuniformity}. A point pattern is hyperuniform if
+its large-scale density fluctuations are anomalously suppressed --- formally, if
+the structure factor $S(k)\!\to\!0$ as $k\!\to\!0$, equivalently if the variance
+of the number of points in a window of radius $R$ grows more slowly than the
+window's area (as its perimeter, $\sigma^2(R)\sim R$, rather than $\sigma^2(R)
+\sim R^2$) \citep{torquato2003,torquato2018}. Hyperuniformity is a \emph{global}
+property: it cannot be read off local spacing. Disordered hyperuniform patterns
+occur in avian photoreceptor mosaics \citep{jiao2014} and a growing list of
+biological and physical systems, where they are thought to reflect an optimised
+balance of local irregularity and long-range uniformity.
+
+The two notions are easily conflated. A pattern with a tight nearest-neighbour
+spacing --- a hard-core liquid, or a field shaped by lateral inhibition --- has a
+nearest-neighbour index well above the random value and looks ``regular'', yet
+its long-wavelength fluctuations need not be suppressed at all: hard-core
+liquids are \emph{not} hyperuniform. Distinguishing the two requires a
+long-range diagnostic (the structure factor or number variance), not a local
+one. Here we apply this distinction to pockmark fields for the first time. Using
+single fields from a comprehensive open geodatabase of Mediterranean pockmarks
+\citep{spatola2025}, we ask whether the spacing regularity reported for such
+fields amounts to hyperuniformity, or is purely local order superimposed on a
+heterogeneous, fluid- and fault-controlled background.
+
+\section{Data and methods}
+
+\paragraph{Data.} We use the geodatabase of \citet{spatola2025}, which compiles
+$7{,}516$ georeferenced pockmarks across the Mediterranean and Black Seas from
+the published literature, each with up to $31$ attributes, distributed as an
+ESRI point shapefile (projected coordinate system WGS84 UTM zone 33N, metres;
+licence CC-BY-4.0). Because the database is a multi-source compilation, we do not
+analyse it as a whole --- pooling independent fields would trivially drive any
+statistic toward the uncorrelated (Poisson) limit. Instead we segment it by the
+\texttt{Location} attribute and select single fields that are (i) spatially
+contiguous, (ii) sufficiently populated, and (iii) free of the duplicate- and
+rounded-coordinate artefacts present in some entries. Three fields, spanning the
+range of local order, are analysed in detail: \emph{Offshore Zannone Island}
+($N=112$), the \emph{northwestern Calabrian margin} ($N=418$), and the
+\emph{Malta Plateau} ($N=184$). All statistics are computed in the projected
+(metre) frame; for fields far from the central meridian the UTM scale factor
+varies negligibly across a single field.
+
+\paragraph{Local order.} We use the Clark--Evans nearest-neighbour index
+\citep{clark1954}, $R=\bar d_{\mathrm{NN}}/\big(1/(2\sqrt{\rho})\big)$, where
+$\bar d_{\mathrm{NN}}$ is the mean nearest-neighbour distance and $\rho$ the
+number density (estimated on the convex hull); $R<1$ indicates clustering, $R=1$
+randomness, and $R>1$ regularity, with a normal-approximation $z$-score.
+
+\paragraph{Long-range order.} We compute the radially-averaged structure factor
+\begin{equation}
+S(\mathbf{k})=\frac1N\Big|\sum_{j=1}^{N}e^{-i\mathbf{k}\cdot\mathbf{r}_j}\Big|^2,
+\qquad \mathbf{k}=2\pi\big(n_x/L_x,\,n_y/L_y\big),
+\label{eq:sk}
+\end{equation}
+on the allowed wavevectors of the bounding box, and report its low-$k$ limit
+$S(k\!\to\!0)$ (the mean over $k<0.4\,k_\rho$, with $k_\rho=2\pi\sqrt{\rho}$). We
+also compute the number variance $\sigma^2(R)$ from counts in random interior
+disks of radius $R$, and its log--log slope: a slope near $2$ is area-like
+(Poisson or clustered), a slope near $1$ is perimeter-like (hyperuniform).
+
+\paragraph{Nulls.} Each field is compared against (i) complete spatial
+randomness (CSR) in the same window; (ii) a random-sequential-adsorption (RSA)
+hard-core process with exclusion distance matched to the field's
+nearest-neighbour scale, representing the steric / lateral-inhibition
+expectation; and (iii) an inhomogeneous-Poisson null that reproduces the field's
+coarse density variations but is otherwise random, isolating the contribution of
+heterogeneity. A Gaussian-perturbed lattice provides a disordered-hyperuniform
+reference.
+
+\section{Results}
+
+\subsection{Local order spans clustered to regular}
+
+The three fields differ markedly in local order (Table~\ref{tab:summary};
+Fig.~\ref{fig:fields}). The northwestern Calabrian margin is strongly clustered
+($R=0.47$, $z=-20.9$), its points falling into several patches. Offshore Zannone
+Island is essentially random ($R=1.08$, $z=+1.6$), a compact, near-isotropic
+cloud. The Malta Plateau is regular ($R=1.26$, $z=+6.7$) but forms an elongated,
+diagonally-trending band (aspect ratio $2.5$) --- regular spacing along a
+lineament rather than an isotropic field.
+
+\subsection{The local order is genuine}
+
+Comparison against the nulls (Table~\ref{tab:nulls}) shows these local signals
+are real, not artefacts of window shape or density. The Calabrian
+nearest-neighbour index ($0.47$) lies below even its inhomogeneous-Poisson null
+($0.80$): the field is more clustered than its density variation alone would
+produce, i.e.\ genuinely clustered into chains and patches. The Malta Plateau
+index ($1.26$) exceeds not only CSR ($1.08$) but also the hard-core RSA null
+($1.15$): its spacing is more regular than a simple steric gas, consistent with
+an actively spaced (lateral-inhibition) lineament. Offshore Zannone tracks CSR
+($1.08$ vs.\ $1.14$), showing no resolvable local exclusion.
+
+\subsection{No field is hyperuniform}
+
+The long-range picture is uniform across all three fields and is the central
+result (Fig.~\ref{fig:orderplane}, Fig.~\ref{fig:nv}). Every field has
+$S(k\!\to\!0)>1$ --- $2.5$ (Zannone), $19.4$ (Calabrian) and $5.4$ (Malta) ---
+and a number variance that grows with window \emph{area} (log--log slope
+$2.8$--$3.3$), not perimeter. The structure factor rises above unity at small
+$k$ in every case and never shows the $S(k\!\to\!0)\to0$ suppression that defines
+hyperuniformity (Fig.~\ref{fig:orderplane}b). In the order plane of local versus
+long-range order (Fig.~\ref{fig:orderplane}a) the fields scatter widely along the
+nearest-neighbour axis but all sit high on the fluctuation axis; the hyperuniform
+region is empty.
+
+Crucially, each field's long-range fluctuation level matches its own
+inhomogeneous-Poisson null: $S(k\!\to\!0)=2.5$ versus $2.1$ (Zannone), $19.4$
+versus $9.8$ (Calabrian), $5.4$ versus $6.7$ (Malta). The excess density
+fluctuation is therefore largely the signature of density heterogeneity ---
+patchiness, the elongated lineament, regional gradients --- and not of any
+intrinsic long-range correlation. The only suppression of $S(k\!\to\!0)$ below
+unity anywhere in the analysis appears in the hard-core RSA \emph{null}
+($0.7$--$0.9$), never in the data.
+
+\begin{table}[t]
+\centering
+\caption{The three analysed pockmark fields. $R$ is the Clark--Evans
+nearest-neighbour index ($<1$ clustered, $>1$ regular); $d_0$ the median
+nearest-neighbour distance; $S(k\!\to\!0)$ the low-$k$ structure factor; the last
+column the log--log slope of the number variance ($\approx2$ area-like,
+$\approx1$ hyperuniform).}
+\label{tab:summary}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Field & $N$ & extent & aspect & $R$ & $z$ & $d_0$ & $S(k\!\to\!0)$ / NV slope\\
+ & & (km) & & & & (m) & \\
+\midrule
+Offshore Zannone Island      & $112$ & $1.4$  & $1.8$ & $1.08$ & $+1.6$  & $42$  & $2.5$ / $2.8$\\
+NW Calabrian margin          & $418$ & $37.5$ & $1.7$ & $0.47$ & $-20.9$ & $211$ & $19.4$ / $2.9$\\
+Malta Plateau                & $184$ & $11.2$ & $2.5$ & $1.26$ & $+6.7$  & $103$ & $5.4$ / $3.3$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Each field against its nulls: nearest-neighbour index $R$, low-$k$
+structure factor $S(k\!\to\!0)$, and number-variance slope. Local order is real
+(data $R$ departs from CSR in the expected direction and, for the clustered and
+regular fields, beyond the heterogeneity and hard-core nulls), but the long-range
+fluctuations of every field track its inhomogeneous-Poisson null --- none is
+hyperuniform.}
+\label{tab:nulls}
+\begin{tabular}{llrrr}
+\toprule
+Field & Model & $R$ & $S(k\!\to\!0)$ & NV slope\\
+\midrule
+\multirow{4}{*}{Offshore Zannone}
+ & data                  & $1.08$ & $2.54$ & $2.81$\\
+ & CSR                   & $1.14$ & $1.00$ & $1.84$\\
+ & RSA hard-core         & $1.31$ & $0.72$ & $1.84$\\
+ & inhomogeneous-Poisson & $1.04$ & $2.05$ & $2.60$\\
+\midrule
+\multirow{4}{*}{NW Calabrian}
+ & data                  & $0.47$ & $19.4$ & $2.90$\\
+ & CSR                   & $1.03$ & $0.99$ & $1.87$\\
+ & RSA hard-core         & $1.07$ & $1.02$ & $1.93$\\
+ & inhomogeneous-Poisson & $0.80$ & $9.77$ & $3.32$\\
+\midrule
+\multirow{4}{*}{Malta Plateau}
+ & data                  & $1.26$ & $5.36$ & $3.28$\\
+ & CSR                   & $1.08$ & $1.04$ & $1.94$\\
+ & RSA hard-core         & $1.15$ & $0.91$ & $1.93$\\
+ & inhomogeneous-Poisson & $0.94$ & $6.73$ & $3.20$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_fields.pdf}
+\caption{The three analysed pockmark fields in their projected (metre) frame,
+centred. Local order ranges from clustered (Calabrian, multi-patch) through
+near-random (Zannone) to regular but anisotropic (Malta Plateau, an elongated
+lineament).}
+\label{fig:fields}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_orderplane.pdf}
+\caption{\textbf{(a)} Order plane: nearest-neighbour index (local order) versus
+$S(k\!\to\!0)$ (long-range order, log scale). The fields scatter along the local
+axis but all lie well above the Poisson line on the fluctuation axis; the
+hyperuniform region (bottom, $S(k\!\to\!0)\to0$) is empty. Reference markers:
+CSR, a hard-core liquid (RSA), and a disordered-hyperuniform pattern.
+\textbf{(b)} Radial structure factor: every field rises above $S=1$ at small $k$
+(density heterogeneity) and none shows the $S(k\!\to\!0)\to0$ dip of
+hyperuniformity. $k_\rho=2\pi\sqrt{\rho}$.}
+\label{fig:orderplane}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\textwidth]{fig_numbervariance.pdf}
+\caption{Number variance $\sigma^2(R)$ versus window radius. For every field
+$\sigma^2(R)$ grows with window area (slope $\approx2$--$3$), parallel to the
+Poisson reference, rather than with perimeter (slope $1$, the hyperuniform
+reference). No field shows hyperuniform suppression of density fluctuations.}
+\label{fig:nv}
+\end{figure}
+
+\FloatBarrier
+\section{Discussion}
+
+Across three Mediterranean pockmark fields spanning the full range of local
+order, the long-range verdict is unanimous: none is hyperuniform. Local
+regularity, where present, is genuine --- the Malta Plateau is more regularly
+spaced than a hard-core gas, and the Calabrian margin is genuinely clustered ---
+but it does not propagate to suppressed long-wavelength density fluctuations.
+Instead, the large-scale fluctuations of every field are super-Poissonian and
+are accounted for by density heterogeneity, as shown by their agreement with the
+inhomogeneous-Poisson nulls. This is the same local-versus-long-range structure
+seen in other self-organised geomorphic patterns: order that is real at the scale
+of neighbouring features but is overwritten at long range by the heterogeneity of
+the natural substrate.
+
+The single regular field sharpens the point. The Malta Plateau's high
+nearest-neighbour index might, on a local statistic alone, be read as evidence of
+an ordered, possibly hyperuniform, self-organised field. The structure factor and
+number variance show otherwise: the regularity is one-dimensional, expressed
+along an elongated lineament (aspect ratio $2.5$), and the isotropically-averaged
+long-range fluctuations are if anything the largest of the three fields. Regular
+nearest-neighbour spacing of the kind attributed to lateral inhibition
+\citep{hammer2009} can thus coexist with strongly non-hyperuniform long-range
+behaviour; the two must be measured separately.
+
+We are explicit about what is and is not new. That pockmark fields can be
+clustered along faults or regularly spaced by lateral inhibition is established
+\citep{hammer2009,spatola2025}, as is the regional, fault-related distribution of
+the Mediterranean database used here. The contribution of this note is the
+hyperuniformity-class characterisation --- the structure factor, number variance
+and matched nulls --- and the resulting verdict that the order in these fields is
+local and heterogeneity-limited, not hyperuniform. Several caveats bound the
+result. The database is a literature compilation of varying per-field
+completeness; we mitigated this by selecting contiguous, artefact-free fields,
+but completeness cannot be guaranteed, and incompleteness would, if anything, add
+spurious fluctuations rather than suppress them, so it cannot mask a true
+hyperuniform signal. The field sizes ($N\sim10^2$) limit the lowest accessible
+wavenumber, so we claim only the absence of hyperuniformity, not a precise
+fluctuation exponent. Finally, the analysis is isotropically averaged; the Malta
+Plateau shows that directional analysis is the natural next step for lineated
+fields.
+
+\section{Conclusion}
+
+Submarine pockmark fields exhibit local spatial order ranging from clustered to
+regular, but a structure-factor and number-variance analysis of representative
+Mediterranean fields finds no hyperuniformity: long-range density fluctuations
+are super-Poissonian and governed by substrate heterogeneity, and the one
+genuinely regular field is an anisotropic lineament. Nearest-neighbour
+regularity in a fluid-escape field should therefore not be taken as evidence of
+long-range order without a structure-factor test.
+
+\section*{Data and code availability}
+The pockmark geodatabase is from \citet{spatola2025}, Zenodo
+\href{https://doi.org/10.5281/zenodo.15425907}{10.5281/zenodo.15425907}
+(CC-BY-4.0). Analysis code (a pure-Python shapefile reader, the point-pattern
+diagnostics, and the field-selection and figure scripts), the derived per-field
+coordinates and all result tables are available at
+\url{https://github.com/Ruqing1963/pockmark-field-order} and archived on Zenodo
+(DOI assigned on release).
+
+\section*{Acknowledgements}
+This work uses the open pockmark geodatabase of Spatola and colleagues; their
+compilation made this analysis possible.
+
+\begin{thebibliography}{99}
+
+\bibitem[Clark \& Evans(1954)]{clark1954}
+P.~J. Clark and F.~C. Evans.
+Distance to nearest neighbor as a measure of spatial relationships in
+populations. \textit{Ecology} \textbf{35}, 445--453 (1954).
+
+\bibitem[Hammer(2009)]{hammer2009}
+\O.~Hammer.
+Pattern formation by local amplification and lateral inhibition: examples from
+biology and geology.
+\textit{Eur. Phys. J. Special Topics} \textbf{178}, 5--12 (2009).
+
+\bibitem[Hovland \& Judd(1988)]{hovland1988}
+M.~Hovland and A.~G. Judd.
+\textit{Seabed Pockmarks and Seepages: Impact on Geology, Biology and the Marine
+Environment}. Graham \& Trotman, London (1988).
+
+\bibitem[Jiao et al.(2014)]{jiao2014}
+Y.~Jiao, T.~Lau, H.~Hatzikirou, M.~Meyer-Hermann, J.~C. Corbo, and S.~Torquato.
+Avian photoreceptor patterns represent a disordered hyperuniform solution to a
+multiscale packing problem. \textit{Phys. Rev. E} \textbf{89}, 022721 (2014).
+
+\bibitem[King \& MacLean(1970)]{king1970}
+L.~H. King and B.~MacLean.
+Pockmarks on the Scotian Shelf.
+\textit{Geol. Soc. Am. Bull.} \textbf{81}, 3141--3148 (1970).
+
+\bibitem[Spatola et al.(2025)]{spatola2025}
+D.~Spatola, M.~Rovere, D.~Casalbore, and F.~L. Chiocci.
+Pockmarks of the Mediterranean region seas: a comprehensive geodatabase for
+marine geomorphological analysis. \textit{Sci. Data} \textbf{12}, 1049 (2025).
+
+\bibitem[Torquato(2018)]{torquato2018}
+S.~Torquato.
+Hyperuniform states of matter.
+\textit{Phys. Rep.} \textbf{745}, 1--95 (2018).
+
+\bibitem[Torquato \& Stillinger(2003)]{torquato2003}
+S.~Torquato and F.~H. Stillinger.
+Local density fluctuations, hyperuniformity, and order metrics.
+\textit{Phys. Rev. E} \textbf{68}, 041113 (2003).
+
+\end{thebibliography}
+
+\end{document}
