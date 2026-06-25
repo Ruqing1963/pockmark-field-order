@@ -1,0 +1,13 @@
+field,model,NNI,Sk0,NVslope
+Offshore Zannone Island,DATA,1.081,2.54,2.81
+Offshore Zannone Island,CSR,1.14,1.0,1.84
+Offshore Zannone Island,RSA_hardcore,1.305,0.72,1.84
+Offshore Zannone Island,inhomogeneous_Poisson,1.043,2.05,2.6
+northwestern Calabrian margin,DATA,0.465,19.38,2.9
+northwestern Calabrian margin,CSR,1.026,0.99,1.87
+northwestern Calabrian margin,RSA_hardcore,1.069,1.02,1.93
+northwestern Calabrian margin,inhomogeneous_Poisson,0.8,9.77,3.32
+Malta Plateau,DATA,1.256,5.36,3.28
+Malta Plateau,CSR,1.078,1.04,1.94
+Malta Plateau,RSA_hardcore,1.145,0.91,1.93
+Malta Plateau,inhomogeneous_Poisson,0.943,6.73,3.2
