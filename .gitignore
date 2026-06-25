@@ -1,0 +1,14 @@
+data/raw/*.shp
+data/raw/*.dbf
+data/raw/*.shx
+data/raw/*.prj
+data/raw/*.cpg
+data/raw/*.sbn
+data/raw/*.sbx
+data/raw/*.kmz
+data/raw/*.zip
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.out

@@ -1,0 +1,13 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Ruqing Chen (GUT Geoservice Inc.)
+
+The paper, figures, derived data and analysis code in this repository are
+licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+THIRD-PARTY DATA: the pockmark geodatabase analysed here is from Spatola et al.
+(2025), Sci. Data 12, 1049, archived on Zenodo (10.5281/zenodo.15425907) under
+CC BY 4.0. The full raw shapefile is NOT redistributed in this repository; obtain
+it from Zenodo and cite Spatola et al. (2025). The derived per-field coordinates
+included here (data/selected_field_coordinates.csv) are reproduced from that
+CC-BY-4.0 source with attribution.
